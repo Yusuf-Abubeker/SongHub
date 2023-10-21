@@ -5,14 +5,17 @@ const songsSlice = createSlice({
   initialState: {
     songs: [],
     selectedSong: null,
-    editedSong: null, // Add this property
-    editError: null, // Add this property
+    editedSong: null,
+    editError: null,
     isLoading: true,
     error: null,
     isDeleting: false,
     errors: null,
   },
   reducers: {
+    addSong: (state, action) => {
+      state.songs.push(action.payload);
+    },
     setSongs: (state, action) => {
       state.songs = action.payload;
       state.isLoading = false;
@@ -51,6 +54,7 @@ const songsSlice = createSlice({
 });
 
 export const {
+  addSong,
   setSongs,
   setSongsLoading,
   setSongError,

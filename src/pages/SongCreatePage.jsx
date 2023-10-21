@@ -11,8 +11,6 @@ const SongCreatePage = () => {
   const handleFormSubmit = async (formData) => {
     try {
       const response = await apiClient.post("/yusuf/songs", formData);
-
-      // Assuming the server responds with the created song object
       setCreatedSong(response.data);
       //window.location.reload();
       navigate("/");
@@ -27,13 +25,9 @@ const SongCreatePage = () => {
       <h2>Create a New Song</h2>
       {createdSong ? (
         <div>
-          
-              <p>Song successfully created!</p>;
-           
-              <p>Title: {createdSong.title}</p>;
-            
-              <p>Artist: {createdSong.artist}</p>;
-            
+          <p>Song successfully created!</p>;
+          <p>Title: {createdSong.title}</p>;
+          <p>Artist: {createdSong.artist}</p>;
         </div>
       ) : (
         <SongForm onSubmit={handleFormSubmit} />

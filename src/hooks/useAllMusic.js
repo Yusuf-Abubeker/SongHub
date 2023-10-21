@@ -1,4 +1,3 @@
-// useAllMusic.js
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { setSongs, setSongsLoading, setSongError } from "../store/songSlice";

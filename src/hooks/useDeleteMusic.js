@@ -1,6 +1,9 @@
-// useDeleteMusic.js
 import { useDispatch } from "react-redux";
-import { setDeleting, setDeleteError, clearDeleteStatus } from "../store/songSlice";
+import {
+  setDeleting,
+  setDeleteError,
+  clearDeleteStatus,
+} from "../store/songSlice";
 import apiClient from "../services/api-client";
 
 const useDeleteMusic = () => {

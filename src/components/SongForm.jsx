@@ -21,11 +21,9 @@ const SongForm = ({ onSubmit, initialValues }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Create a FormData object to handle the file upload
     const formData = new FormData();
     formData.append("songFile", audioFile);
 
-    // Add other song data to the FormData
     formData.append("title", songData.title);
     formData.append("artist", songData.artist);
     formData.append("genre", songData.genre);
