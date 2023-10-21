@@ -4,7 +4,7 @@ import songDetailReducer from './songDetailSlice';
 
 const store = configureStore({
   reducer: {
-    songs: songsReducer, // Replace with your slice reducer
+    songs: songsReducer,
     songDetail: songDetailReducer,
   },
 });
