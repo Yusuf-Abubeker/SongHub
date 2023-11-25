@@ -1,8 +1,45 @@
-# React + Vite
+# SongHub
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+SongHub is a web application that allows users to manage and explore a collection of songs. Users can add, edit, and delete songs, view song details, and listen to audio files. The application is built using React, Redux, and a Node.js backend.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- View a list of songs in the catalog.
+- Select a song to view its details.
+- Add new songs to the catalog, including audio files.
+- Edit existing song details.
+- Delete songs from the catalog.
+
+## Technologies Used
+
+- React: A JavaScript library for building user interfaces.
+- Redux: A predictable state container for managing application state.
+- API Client: A custom API client for making requests to the server.
+- React Router: For routing within the React application.
+- CSS: Styling the application with CSS.
+- Axios: A promise-based HTTP client for making API requests.
+  - ### At the backend
+- Node.js: A JavaScript runtime for building the server-side of the application.
+- Express.js: A web application framework for Node.js.
+- MongoDB: A NoSQL database for storing song data.
+- https://github.com/Yusuf-Abubeker/Song-Management-API
+
+## Getting Started
+
+To run the application locally, follow these steps:
+first clone and start the server, the link is above
+
+1. Clone the repository to your local machine:
+
+   ```bash
+   git clone https://github.com/your-username/SongHub.git
+
+   cd SongHub
+
+   npm install
+2. run react server
+   ```bash
+   npm run dev
+
+### I couldn't deploy this app on netlify, because the backend server is run in my local machine
+and i build this project for the last three days with the backend server, for Internship filtering in addis software company (https://addissoftware.com/)
