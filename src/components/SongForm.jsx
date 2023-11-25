@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "../styles/SongForm.css";
+import * as styles from "../styles/SongForm"; // Update the path based on your file structure
 
 const SongForm = ({ onSubmit, initialValues }) => {
   const [songData, setSongData] = useState(initialValues || {});
@@ -34,15 +34,12 @@ const SongForm = ({ onSubmit, initialValues }) => {
   };
 
   return (
-    <div className="song-form-container">
-      <form onSubmit={handleSubmit}>
-        <h2 className="song-form-title">Song Form</h2>
-        <div>
-          <label className="song-form-label" htmlFor="title">
-            Title:
-          </label>
-          <input
-            className="song-form-input"
+    <styles.FormContainer>
+      <styles.Form onSubmit={handleSubmit}>
+        <styles.Title>Song Form</styles.Title>
+        <styles.FormGroup>
+          <styles.InputLabel htmlFor="title">Title:</styles.InputLabel>
+          <styles.Input
             type="text"
             id="title"
             name="title"
@@ -50,13 +47,10 @@ const SongForm = ({ onSubmit, initialValues }) => {
             value={songData.title || ""}
             onChange={handleChange}
           />
-        </div>
-        <div>
-          <label className="song-form-label" htmlFor="artist">
-            Artist:
-          </label>
-          <input
-            className="song-form-input"
+        </styles.FormGroup>
+        <styles.FormGroup>
+          <styles.InputLabel htmlFor="artist">Artist:</styles.InputLabel>
+          <styles.Input
             type="text"
             id="artist"
             name="artist"
@@ -64,13 +58,10 @@ const SongForm = ({ onSubmit, initialValues }) => {
             value={songData.artist || ""}
             onChange={handleChange}
           />
-        </div>
-        <div>
-          <label className="song-form-label" htmlFor="genre">
-            Genre:
-          </label>
-          <input
-            className="song-form-input"
+        </styles.FormGroup>
+        <styles.FormGroup>
+          <styles.InputLabel htmlFor="genre">Genre:</styles.InputLabel>
+          <styles.Input
             type="text"
             id="genre"
             name="genre"
@@ -78,13 +69,10 @@ const SongForm = ({ onSubmit, initialValues }) => {
             value={songData.genre || ""}
             onChange={handleChange}
           />
-        </div>
-        <div>
-          <label className="song-form-label" htmlFor="releaseYear">
-            Release Year:
-          </label>
-          <input
-            className="song-form-input"
+        </styles.FormGroup>
+        <styles.FormGroup>
+          <styles.InputLabel htmlFor="releaseYear">Release Year:</styles.InputLabel>
+          <styles.Input
             type="number"
             id="releaseYear"
             name="releaseYear"
@@ -92,16 +80,10 @@ const SongForm = ({ onSubmit, initialValues }) => {
             value={songData.releaseYear || ""}
             onChange={handleChange}
           />
-        </div>
-        <div>
-          <label className="song-form-label" htmlFor="songFile">
-            Audio File:
-          </label>
-          <label className="song-form-file-label" htmlFor="songFile">
-            Choose File
-          </label>
-          <input
-            className="song-form-file-input"
+        </styles.FormGroup>
+        <styles.FormGroup>
+          <styles.InputLabel htmlFor="songFile">Audio File:</styles.InputLabel>
+          <styles.FileInput
             type="file"
             id="songFile"
             name="songFile"
@@ -109,14 +91,12 @@ const SongForm = ({ onSubmit, initialValues }) => {
             accept="audio/*"
             onChange={handleFileChange}
           />
-        </div>
-        <div>
-          <button className="song-form-button" type="submit">
-            Submit
-          </button>
-        </div>
-      </form>
-    </div>
+        </styles.FormGroup>
+        <styles.FormGroup>
+          <styles.SubmitButton type="submit">Submit</styles.SubmitButton>
+        </styles.FormGroup>
+      </styles.Form>
+    </styles.FormContainer>
   );
 };
 

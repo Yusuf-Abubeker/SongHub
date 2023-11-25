@@ -1,23 +1,20 @@
-import React from "react";
-import {
-  BrowserRouter as Router,
-  Route,
-  Routes,
-  Outlet,
-} from "react-router-dom";
-import Home from "./pages/Home";
-import SongCreatePage from "./pages/SongCreatePage";
+import { createBrowserRouter, useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react"; // Import useState and useEffect
+import Layout from "./components/Layout";
+import ErrorPage from "./components/ErrorPage";
+import UploadPage from "./components/UploadPage";
+import MusicPage from "./components/SongList";
 
-function App() {
-  return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<Outlet />} />
-        <Route index element={<Home />} />
-        <Route path="/create" element={<SongCreatePage />} />
-      </Routes>
-    </Router>
-  );
-}
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Layout />,
+    errorElement: <ErrorPage />,
+    children: [
+      { index: true, element: <MusicPage /> },
+      { path: "create", element: <UploadPage /> },
+    ],
+  },
+]);
 
-export default App;
+export default router;

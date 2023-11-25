@@ -1,21 +1,18 @@
-import React, { useState} from "react";
+import React, { useState } from "react";
+import * as styles from "../styles/SongDetail";
 import { useSelector, useDispatch } from "react-redux";
 import {
   setEditedSong,
   setEditError,
   selectSelectedSong,
-  
 } from "../store/songSlice";
 import useMusicDetail from "../hooks/useMusicDetail";
 import useDeleteMusic from "../hooks/useDeleteMusic";
 import apiClient from "../services/api-client";
 import SongForm from "./SongForm";
-import "../styles/SongDetail.css";
 
-const SongDetail = () => {
-  const selectedSong = useSelector(selectSelectedSong);
-
-  const {song, audioUrl, isLoading, error } = useMusicDetail(selectedSong);
+const SongDetail = ({ selectedSongId, onClose }) => {
+  const { song, audioUrl, isLoading, error } = useMusicDetail(selectedSongId);
   const { deleteMusic, isDeleting, errors } = useDeleteMusic();
   const [isEditing, setIsEditing] = useState(false);
   const editedSong = useSelector((state) => state.songs.editedSong);
@@ -27,9 +24,12 @@ const SongDetail = () => {
     dispatch(setEditError(null)); // Clear any previous edit errors
   };
 
+  const handleCloseClick = () => {
+    onClose();
+  };
   const handleFormSubmit = async (formData) => {
     try {
-      const response = await apiClient.put(`/yusuf/songs/${selectedSong}`, formData);
+      const response = await apiClient.put(`/yusuf/songs/${selectedSongId}`, formData);
       setEditedSong(response.data);
       setIsEditing(false);
       // Refresh the page after editing
@@ -39,54 +39,49 @@ const SongDetail = () => {
       setEditError("Error occurred while updating the song.");
     }
   };
-
   if (!song) {
     return <div>Select a song to view details</div>;
   }
   if (isLoading) return <p>Loading ...</p>;
 
   return (
-    <div className="song-detail-modal-overlay">
-      <div className="song-detail-card">
-        <button onClick={() => window.location.reload() } className='x-button'> X </button>
-        <h2 className="song-detail-title">Song Details</h2>
-        <p>Title: {song.title}</p>
-        <p>Artist: {song.artist}</p>
-        <p>Genre: {song.genre}</p>
-        <p>Release Year: {song.releaseYear}</p>
+    <styles.Overlay>
+      <styles.Card>
+        <styles.CloseButton onClick={handleCloseClick}>X</styles.CloseButton>
+        {isEditing ? (
+          <div>
+            <SongForm initialValues={song} onSubmit={handleFormSubmit} />
+            {editedSong ? <p>Song edited successfully</p> : null}
+            {editError ? <p>{editError}</p> : null}
+          </div>
+        ) : (
+          <div>
+            <styles.Title>Song Details</styles.Title>
+            <styles.SongInfo>Title: {song.title}</styles.SongInfo>
+            <styles.SongInfo>Artist: {song.artist}</styles.SongInfo>
+            <styles.SongInfo>Genre: {song.genre}</styles.SongInfo>
+            <styles.SongInfo>Release Year: {song.releaseYear}</styles.SongInfo>
 
-        {audioUrl && (
-          <audio className="song-detail-audio" controls src={audioUrl} />
+            {audioUrl && <styles.AudioPlayer controls src={audioUrl} />}
+
+            <styles.ButtonContainer>
+              <styles.EditButton onClick={handleEditClick}>
+                Edit
+              </styles.EditButton>
+
+              <styles.DeleteButton
+                onClick={() => {
+                  deleteMusic(song._id);
+                  window.location.reload();
+                }}
+              >
+                {isDeleting ? "Deleting" : "Delete"}
+              </styles.DeleteButton>
+            </styles.ButtonContainer>
+          </div>
         )}
-
-        <div className="song-detail-button-container">
-          {isEditing ? (
-            <div>
-              <SongForm initialValues={song} onSubmit={handleFormSubmit} />
-              {editedSong ? <p>Song edited successfully</p> : null}
-              {editError ? <p>{editError}</p> : null}
-            </div>
-          ) : (
-            <button
-              className="song-detail-edit-button"
-              onClick={handleEditClick}
-            >
-              Edit
-            </button>
-          )}
-
-          <button
-            className="song-detail-delete-button"
-            onClick={() => {
-              deleteMusic(song._id);
-              window.location.reload();
-            }}
-          >
-            {isDeleting ? "Deleting" : "Delete"}
-          </button>
-        </div>
-      </div>
-    </div>
+      </styles.Card>
+    </styles.Overlay>
   );
 };
 
