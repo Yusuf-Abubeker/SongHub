@@ -1,24 +1,24 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "@emotion/styled";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { FaMusic } from "react-icons/fa";
+import { selectSong, setIsSongDetailOpen } from "../store/reducers/songSlice";
 import SongDetail from "./SongDetail";
 import useAllMusic from "../hooks/useAllMusic";
 
 const MusicPage = () => {
-  const [isSongDetailOpen, setIsSongDetailOpen] = useState(false);
-  const [selectedSongId, setSelectedSongId] = useState(null);
+  const sSongDetailOpen = useSelector((s) => s.songs.isSongDetailOpen);
   const { music, error, isLoading } = useAllMusic();
   const dispatch = useDispatch();
 
   const openSongDetail = (songId) => {
-    setSelectedSongId(songId);
-    setIsSongDetailOpen(true);
+    dispatch(selectSong(songId))
+    dispatch(setIsSongDetailOpen());
   };
 
   const closeSongDetail = () => {
-    setSelectedSongId(null);
-    setIsSongDetailOpen(false);
+    dispatch(selectSong(null))
+    dispatch(setIsSongDetailOpen());
   };
 
   return (
@@ -28,7 +28,6 @@ const MusicPage = () => {
         <h1>All Music</h1>
       </Header>
 
-      {isLoading && <p>Loading...</p>}
       {error && <p>Error: {error}</p>}
       {music && (
         <List>
@@ -50,8 +49,8 @@ const MusicPage = () => {
         </List>
       )}
 
-      {isSongDetailOpen && (
-        <SongDetail selectedSongId={selectedSongId} onClose={closeSongDetail} />
+      {sSongDetailOpen && (
+        <SongDetail onClose={closeSongDetail} />
       )}
     </Container>
   );

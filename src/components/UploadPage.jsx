@@ -2,7 +2,7 @@ import React from "react";
 import apiClient from "../services/api-client";
 import styled from "@emotion/styled";
 import { useNavigate } from "react-router-dom";
-import SongForm from "./SongForm"; // Update the path based on your file structure
+import SongForm from "./SongForm";
 
 const UploadPage = () => {
   const navigate = useNavigate();

@@ -1,10 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit';
-import songsReducer from './songSlice';
-import songDetailReducer from './songDetailSlice';
+import songsReducer from './reducers/songSlice';
+import songDetailReducer from './reducers/songDetailSlice';
 
 const store = configureStore({
   reducer: {
-    songs: songsReducer, // Replace with your slice reducer
+    songs: songsReducer,
     songDetail: songDetailReducer,
   },
 });

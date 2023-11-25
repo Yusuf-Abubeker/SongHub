@@ -4,7 +4,7 @@ import {
   setSongDetail,
   setSongDetailLoading,
   setSongDetailError,
-} from "../store/songDetailSlice";
+} from "../store/reducers/songDetailSlice";
 import apiClient from "../services/api-client";
 
 const useMusicDetail = (songId) => {

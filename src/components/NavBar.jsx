@@ -17,23 +17,38 @@ const Navbar = () => {
 };
 
 const Container = styled.div`
-  background-color: #2c3e50; /* Navbar background color */
-  padding: 10px;
+  background-color: #2c3e50;
+  padding: 15px;
   display: flex;
   justify-content: space-between;
   align-items: center;
 
   @media (max-width: 768px) {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
+    padding: 10px 20px;
   }
 `;
 
 const Logo = styled.div`
   font-size: 24px;
+  margin-right: 20px;
+
   a {
     text-decoration: none;
-    color: #ffffff; /* Navbar text color */
+    color: #ffffff;
+    font-weight: bold;
+    transition: color 0.3s ease;
+
+    &:hover {
+      color: #3498db;
+    }
+  }
+
+  @media (max-width: 768px) {
+    margin: 0;
+    margin-bottom: 10px;
+    text-align: center;
   }
 `;
 
@@ -41,25 +56,30 @@ const NavLinks = styled.div`
   display: flex;
 
   a {
-    margin-left: 20px;
+    margin-right: 20px;
     text-decoration: none;
-    color: #ffffff; /* Navbar text color */
+    font-weight: bold;
+    color: #ffffff;
     transition: color 0.3s ease;
 
     &:hover {
-      color: #3498db; /* Navbar text color on hover */
+      color: #3498db;
     }
 
     &.active {
-      color: #3498db; /* Active link color */
+      color: #3498db;
     }
   }
 
   @media (max-width: 768px) {
-    margin-top: 10px;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
+
+    a {
+      margin: 5px 0;
+    }
   }
 `;
+
 
 export default Navbar;

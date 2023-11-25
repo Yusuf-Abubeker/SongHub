@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import * as styles from "../styles/SongForm"; // Update the path based on your file structure
+import * as styles from "../styles/SongForm";
 
 const SongForm = ({ onSubmit, initialValues }) => {
   const [songData, setSongData] = useState(initialValues || {});
@@ -15,7 +15,12 @@ const SongForm = ({ onSubmit, initialValues }) => {
 
   const handleFileChange = (e) => {
     const file = e.target.files[0];
-    setAudioFile(file);
+
+    if (file && file.size <= 8 * 1024 * 1024) {
+      setAudioFile(file);
+    } else {
+      console.error("File size exceeds the limit (8 megabytes). Please choose a smaller file.");
+    }
   };
 
   const handleSubmit = (e) => {
@@ -82,7 +87,7 @@ const SongForm = ({ onSubmit, initialValues }) => {
           />
         </styles.FormGroup>
         <styles.FormGroup>
-          <styles.InputLabel htmlFor="songFile">Audio File:</styles.InputLabel>
+          <styles.InputLabel htmlFor="songFile">Audio File: size &lt; 8 mb</styles.InputLabel>
           <styles.FileInput
             type="file"
             id="songFile"

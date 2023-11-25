@@ -10,7 +10,9 @@ const songsSlice = createSlice({
     isLoading: true,
     error: null,
     isDeleting: false,
+    isEditing: false,
     errors: null,
+    isSongDetailOpen:false
   },
   reducers: {
     addSong: (state, action) => {
@@ -42,6 +44,9 @@ const songsSlice = createSlice({
       state.isDeleting = true;
       state.errors = null;
     },
+    setIsEditing:(state) => {
+      state.isEditing = true;
+    },
     setDeleteError: (state, action) => {
       state.isDeleting = false;
       state.errors = action.payload;
@@ -50,6 +55,9 @@ const songsSlice = createSlice({
       state.isDeleting = false;
       state.errors = null;
     },
+    setIsSongDetailOpen: (state) => {
+      state.isSongDetailOpen = true;
+    }
   },
 });
 
@@ -62,8 +70,10 @@ export const {
   setEditedSong,
   setEditError,
   setDeleting,
+  setIsEditing,
   setDeleteError,
   clearDeleteStatus,
+  setIsSongDetailOpen,
 } = songsSlice.actions;
 export const selectAllSongs = (state) => state.songs.songs;
 export const selectSelectedSong = (state) => state.songs.selectedSong;

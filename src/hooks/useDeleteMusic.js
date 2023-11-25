@@ -3,7 +3,7 @@ import {
   setDeleting,
   setDeleteError,
   clearDeleteStatus,
-} from "../store/songSlice";
+} from "../store/reducers/songSlice";
 import apiClient from "../services/api-client";
 
 const useDeleteMusic = () => {

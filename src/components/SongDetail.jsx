@@ -1,26 +1,28 @@
-import React, { useState } from "react";
+import React from "react";
 import * as styles from "../styles/SongDetail";
 import { useSelector, useDispatch } from "react-redux";
 import {
   setEditedSong,
   setEditError,
   selectSelectedSong,
-} from "../store/songSlice";
+  setIsEditing,
+} from "../store/reducers/songSlice";
 import useMusicDetail from "../hooks/useMusicDetail";
 import useDeleteMusic from "../hooks/useDeleteMusic";
 import apiClient from "../services/api-client";
 import SongForm from "./SongForm";
 
-const SongDetail = ({ selectedSongId, onClose }) => {
-  const { song, audioUrl, isLoading, error } = useMusicDetail(selectedSongId);
-  const { deleteMusic, isDeleting, errors } = useDeleteMusic();
-  const [isEditing, setIsEditing] = useState(false);
+const SongDetail = ({ onClose }) => {
+  const selectedSongId = useSelector(selectSelectedSong);
   const editedSong = useSelector((state) => state.songs.editedSong);
   const editError = useSelector((state) => state.songs.editError);
+  const isEditing = useSelector((s) => s.songs.isEditing);
   const dispatch = useDispatch();
+  const { song, audioUrl, isLoading, error } = useMusicDetail(selectedSongId);
+  const { deleteMusic, isDeleting, errors } = useDeleteMusic();
 
   const handleEditClick = () => {
-    setIsEditing(!isEditing);
+    dispatch(setIsEditing());
     dispatch(setEditError(null)); // Clear any previous edit errors
   };
 
@@ -29,9 +31,12 @@ const SongDetail = ({ selectedSongId, onClose }) => {
   };
   const handleFormSubmit = async (formData) => {
     try {
-      const response = await apiClient.put(`/yusuf/songs/${selectedSongId}`, formData);
-      setEditedSong(response.data);
-      setIsEditing(false);
+      const response = await apiClient.put(
+        `/yusuf/songs/${selectedSongId}`,
+        formData
+      );
+      dispatch(setEditedSong(response.data));
+      dispatch(setIsEditing());
       // Refresh the page after editing
       window.location.reload();
     } catch (error) {

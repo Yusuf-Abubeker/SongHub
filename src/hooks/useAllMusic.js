@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { setSongs, setSongsLoading, setSongError } from "../store/songSlice";
+import { setSongs, setSongsLoading, setSongError } from "../store/reducers/songSlice";
 import apiClient from "../services/api-client";
 
 const useAllMusic = () => {
