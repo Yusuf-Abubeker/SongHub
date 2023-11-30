@@ -29,7 +29,7 @@ const MusicPage = () => {
       </Header>
 
       {error && <p>Error: {error}</p>}
-      {isLoading && <p>loading ...</p>
+      {isLoading && <p>loading ...</p>}
       {music && (
         <List>
           {music.map((song, index) => (
