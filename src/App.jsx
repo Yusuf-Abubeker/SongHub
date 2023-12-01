@@ -1,5 +1,4 @@
-import { createBrowserRouter, useNavigate } from "react-router-dom";
-import { useState, useEffect } from "react"; // Import useState and useEffect
+import { createBrowserRouter } from "react-router-dom";
 import Layout from "./components/Layout";
 import ErrorPage from "./components/ErrorPage";
 import UploadPage from "./components/UploadPage";

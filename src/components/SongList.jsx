@@ -12,14 +12,21 @@ const MusicPage = () => {
   const dispatch = useDispatch();
 
   const openSongDetail = (songId) => {
-    dispatch(selectSong(songId))
+    dispatch(selectSong(songId));
     dispatch(setIsSongDetailOpen());
   };
 
   const closeSongDetail = () => {
-    dispatch(selectSong(null))
+    dispatch(selectSong(null));
     dispatch(setIsSongDetailOpen());
   };
+
+  if (isLoading)
+    return (
+      <LoadingSpinner>
+        <Spinner />
+      </LoadingSpinner>
+    );
 
   return (
     <Container>
@@ -29,7 +36,7 @@ const MusicPage = () => {
       </Header>
 
       {error && <p>Error: {error}</p>}
-      {isLoading && <p>loading ...</p>}
+
       {music && (
         <List>
           {music.map((song, index) => (
@@ -50,9 +57,7 @@ const MusicPage = () => {
         </List>
       )}
 
-      {sSongDetailOpen && (
-        <SongDetail onClose={closeSongDetail} />
-      )}
+      {sSongDetailOpen && <SongDetail onClose={closeSongDetail} />}
     </Container>
   );
 };
@@ -129,6 +134,37 @@ const SongTitle = styled.div`
 const Artist = styled.div`
   font-size: 14px;
   color: #666666; /* Artist color */
+`;
+
+const LoadingSpinner = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 400px;
+`;
+
+const Spinner = styled.div`
+  border: 4px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top: 4px solid #ff5e3a; /* Spinner color */
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+  transition: opacity 0.3s ease;
+  cursor: pointer;
+
+  &:hover {
+    opacity: 0.7;
+  }
+
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
 `;
 
 export default MusicPage;

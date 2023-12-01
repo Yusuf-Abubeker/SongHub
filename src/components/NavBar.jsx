@@ -1,16 +1,22 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import styled from '@emotion/styled';
+import icon from "/musicIcon.jpg";
+import styled from "@emotion/styled";
 
 const Navbar = () => {
   return (
     <Container>
       <Logo>
-        <NavLink to="/">Music App</NavLink>
+        <img src={icon} alt="Music App Icon" />
+        <NavLink to="/">Song Hub</NavLink>
       </Logo>
       <NavLinks>
-        <NavLink to="/" activeClassName="active">All Music</NavLink>
-        <NavLink to="/create" activeClassName="active">Add New</NavLink>
+        <NavLink to="/" activeClassName="active">
+          All Music
+        </NavLink>
+        <StyledNavLink to="/create" activeClassName="active">
+          +
+        </StyledNavLink>
       </NavLinks>
     </Container>
   );
@@ -22,6 +28,7 @@ const Container = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  
 
   @media (max-width: 768px) {
     flex-direction: column;
@@ -31,8 +38,23 @@ const Container = styled.div`
 `;
 
 const Logo = styled.div`
+  display: flex;
+  align-items: center;
   font-size: 24px;
   margin-right: 20px;
+
+  img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-right: 10px;
+    transition: transform 0.7s ease;
+
+    &:hover {
+      transform: rotate(360deg);
+    }
+  }
 
   a {
     text-decoration: none;
@@ -80,6 +102,32 @@ const NavLinks = styled.div`
     }
   }
 `;
+const StyledNavLink = styled(NavLink)`
+  position: fixed;
+  bottom: 70px;
+  right: 20px;
+  text-decoration: none;
+  font-weight: bold;
+  color: #ffffff;
+  background: linear-gradient(to right, #2ecc71, #2c3e50);
+  font-size: 30px;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform-origin: center;
+  animation: rotate 5s linear infinite;
 
+  @keyframes rotate {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+`;
 
 export default Navbar;

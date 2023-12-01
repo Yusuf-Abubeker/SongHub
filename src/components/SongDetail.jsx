@@ -45,7 +45,7 @@ const SongDetail = ({ onClose }) => {
     }
   };
   if (!song) {
-    return <div>Select a song to view details</div>;
+    return <div>If song details are not visible, it may be due to server restrictions. Please try adding new music to see if the issue persists. Thank you for your understanding.</div>;
   }
   if (isLoading) return <p>Loading ...</p>;
 
