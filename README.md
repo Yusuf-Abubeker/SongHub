@@ -41,5 +41,4 @@ first clone and start the server, the link is above
    ```bash
    npm run dev
 
-### I couldn't deploy this app on netlify, because the backend server is run in my local machine
-and i build this project for the last three days with the backend server, for Internship filtering in addis software company (https://addissoftware.com/)
+i build this project for the last three days with the backend server, for Internship filtering in addis software company (https://addissoftware.com/)
