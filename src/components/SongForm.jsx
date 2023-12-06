@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import * as styles from "../styles/SongForm";
 
-const SongForm = ({ onSubmit, initialValues }) => {
+const SongForm = ({ onSubmit, initialValues, isSubmitting }) => {
   const [songData, setSongData] = useState(initialValues || {});
   const [audioFile, setAudioFile] = useState(null);
 
@@ -98,7 +98,14 @@ const SongForm = ({ onSubmit, initialValues }) => {
           />
         </styles.FormGroup>
         <styles.FormGroup>
-          <styles.SubmitButton type="submit">Submit</styles.SubmitButton>
+        {!isSubmitting && (
+            <styles.SubmitButton type="submit">Submit</styles.SubmitButton>
+          )}
+          {isSubmitting && (
+            <styles.SubmitButton disabled type="submit">
+              Submitting...
+            </styles.SubmitButton>
+          )}
         </styles.FormGroup>
       </styles.Form>
     </styles.FormContainer>
