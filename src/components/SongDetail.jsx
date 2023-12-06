@@ -17,6 +17,7 @@ const SongDetail = ({ onClose }) => {
   const editedSong = useSelector((state) => state.songs.editedSong);
   const editError = useSelector((state) => state.songs.editError);
   const isEditing = useSelector((s) => s.songs.isEditing);
+  
   const dispatch = useDispatch();
   const { song, audioUrl, isLoading, error } = useMusicDetail(selectedSongId);
   const { deleteMusic, isDeleting, errors } = useDeleteMusic();
@@ -77,10 +78,9 @@ const SongDetail = ({ onClose }) => {
               <styles.DeleteButton
                 onClick={() => {
                   deleteMusic(song._id);
-                  window.location.reload();
                 }}
               >
-                {isDeleting ? "Deleting" : "Delete"}
+                {isDeleting ? "Deleting...": "Delete"}
               </styles.DeleteButton>
             </styles.ButtonContainer>
           </div>
