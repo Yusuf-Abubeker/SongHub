@@ -64,7 +64,7 @@ const MusicPage = () => {
 
 const Container = styled.div`
   max-width: 800px;
-  min-height: 400px;
+  min-height: 900px;
   margin: 0 auto;
   padding: 20px;
 `;
@@ -140,7 +140,7 @@ const LoadingSpinner = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 400px;
+  min-height: 900px;
 `;
 
 const Spinner = styled.div`
