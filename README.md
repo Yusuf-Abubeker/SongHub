@@ -17,6 +17,7 @@ SongHub is a web application that allows users to manage and explore a collectio
 - React Router: For routing within the React application.
 - Emotion: A popular CSS-in-JS library for styling React components.
 - Axios: A promise-based HTTP client for making API requests.
+- Redux saga: middleware library for managing side effects in Redux applications
    ### At the backend
 - Node.js: A JavaScript runtime for building the server-side of the application.
 - Express.js: A web application framework for Node.js.
