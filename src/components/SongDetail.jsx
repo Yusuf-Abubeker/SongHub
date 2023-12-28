@@ -21,7 +21,7 @@ const SongDetail = ({ onClose }) => {
 
   const dispatch = useDispatch();
   const { song, audioUrl, isLoading, error } = useMusicDetail(selectedSongId);
-  const { deleteMusic, isDeleting, errors } = useDeleteMusic();
+  const {  deleteSingleMusic, isDeleting, errors } = useDeleteMusic();
 
   const handleEditClick = () => {
     dispatch(setIsEditing());
@@ -87,7 +87,7 @@ const SongDetail = ({ onClose }) => {
 
               <styles.DeleteButton
                 onClick={() => {
-                  deleteMusic(song._id);
+                  deleteSingleMusic(song._id);
                 }}
               >
                 {isDeleting ? "Deleting..." : "Delete"}

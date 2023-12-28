@@ -28,10 +28,7 @@ const songDetailSlice = createSlice({
       // You can update the state here based on the payload if needed
       state.someAdditionalState = action.payload;
     },
-    deletesMusic: (state, action) => ({
-      type: "deleteMusic",
-      payload: action.payload,
-    }),
+    
   },
 });
 
@@ -40,7 +37,6 @@ export const {
   setSongDetailLoading,
   setSongDetailError,
   fetchSongDetailss,
-  deletesMusic,
 } = songDetailSlice.actions;
 export const selectedSong = (state) => state.songDetail.song._id;
 export default songDetailSlice.reducer;

@@ -58,8 +58,6 @@ const songsSlice = createSlice({
     setIsSongDetailOpen: (state) => {
       state.isSongDetailOpen = true;
     },
-    fetchMusic: (state) => ({ type: 'fetchMusic', payload: state }),
-
   },
 });
 
@@ -76,7 +74,6 @@ export const {
   setDeleteError,
   clearDeleteStatus,
   setIsSongDetailOpen,
-  fetchMusic
 } = songsSlice.actions;
 export const selectAllSongs = (state) => state.songs.songs;
 export const selectSelectedSong = (state) => state.songs.selectedSong;
