@@ -28,7 +28,6 @@ const Container = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  
 
   @media (max-width: 768px) {
     flex-direction: column;
@@ -108,6 +107,7 @@ const StyledNavLink = styled(NavLink)`
   right: 20px;
   text-decoration: none;
   font-weight: bold;
+  z-index: 999;
   color: #ffffff;
   background: linear-gradient(to right, #2ecc71, #2c3e50);
   font-size: 30px;

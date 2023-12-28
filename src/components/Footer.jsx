@@ -15,6 +15,7 @@ const Container = styled.div`
   padding-top: 10px;
   padding-bottom: 10px;
   text-align: center;
+  position:relative;
   bottom: 0;
   width: 100%;
 `;

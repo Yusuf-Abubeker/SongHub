@@ -64,7 +64,7 @@ const MusicPage = () => {
 
 const Container = styled.div`
   max-width: 800px;
-  min-height: 400px;
+  min-height: 600px;
   margin: 0 auto;
   padding: 20px;
 `;

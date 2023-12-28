@@ -7,7 +7,7 @@ const songDetailSlice = createSlice({
     audioUrl: null,
     isLoading: true,
     error: null,
-    isSongDetailOpen: false
+    isSongDetailOpen: false,
   },
   reducers: {
     setSongDetail: (state, action) => {
@@ -24,9 +24,23 @@ const songDetailSlice = createSlice({
       state.isLoading = false;
       state.error = action.payload;
     },
+    fetchSongDetailss: (state, action) => {
+      // You can update the state here based on the payload if needed
+      state.someAdditionalState = action.payload;
+    },
+    deletesMusic: (state, action) => ({
+      type: "deleteMusic",
+      payload: action.payload,
+    }),
   },
 });
 
-export const { setSongDetail, setSongDetailLoading, setSongDetailError } = songDetailSlice.actions;
+export const {
+  setSongDetail,
+  setSongDetailLoading,
+  setSongDetailError,
+  fetchSongDetailss,
+  deletesMusic,
+} = songDetailSlice.actions;
 export const selectedSong = (state) => state.songDetail.song._id;
 export default songDetailSlice.reducer;
