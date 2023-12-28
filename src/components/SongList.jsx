@@ -140,7 +140,7 @@ const LoadingSpinner = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 400px;
+  min-height: 700px;
 `;
 
 const Spinner = styled.div`

@@ -14,15 +14,14 @@ SongHub is a web application that allows users to manage and explore a collectio
 
 - React: A JavaScript library for building user interfaces.
 - Redux: A predictable state container for managing application state.
-- API Client: A custom API client for making requests to the server.
 - React Router: For routing within the React application.
-- CSS: Styling the application with CSS.
+- Emotion: A popular CSS-in-JS library for styling React components.
 - Axios: A promise-based HTTP client for making API requests.
-  - ### At the backend
+   ### At the backend
 - Node.js: A JavaScript runtime for building the server-side of the application.
 - Express.js: A web application framework for Node.js.
 - MongoDB: A NoSQL database for storing song data.
-- https://github.com/Yusuf-Abubeker/Song-Management-API
+- [Song Management API](https://github.com/Yusuf-Abubeker/Song-Management-API)
 
 ## Getting Started
 
@@ -32,7 +31,7 @@ first clone and start the server, the link is above
 1. Clone the repository to your local machine:
 
    ```bash
-   git clone https://github.com/your-username/SongHub.git
+   git clone https://github.com/Yusuf-Abubeker/SongHub.git
 
    cd SongHub
 
